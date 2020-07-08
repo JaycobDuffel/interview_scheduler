@@ -6,22 +6,27 @@ import Empty from "components/Appointment/Empty";
 
 
 export default function Appointment(props) {
-  
+
+
   if (props.interview) {
-    return ( 
+    const student = props.interview.student
+    const interviewer = props.interview.interviewer.name
+    console.log(props)
+    return (
+
       <article className="appointment">
-        <Header time={props.time}/>
-        <Show student={props.student} interviewer={props.interviewer}/>
-        </article>
+        <Header time={props.time} />
+        <Show student={student} interviewer={interviewer} />
+      </article>
     )
   } else {
-    return ( 
+    return (
       <article className="appointment">
-        <Header time={props.time}/>
-        <Empty/>
-        </article>
+        <Header time={props.time} />
+        <Empty />
+      </article>
     )
   }
- 
-    
+
+
 }
