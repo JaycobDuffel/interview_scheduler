@@ -9,7 +9,7 @@ export function getAppointmentsForDay(state, day) {
           filteredAppoinments.push(thisAppointment)
         }
       }
-    }; 
+    };
   }
   if (filteredAppoinments.length === 0) {
     return [];
@@ -35,4 +35,30 @@ export function getInterview(state, interview) {
   }
 
   return interviewObj;
+}
+
+export function getInterviewersForDay(state, day) {
+
+  const filteredInterviewers = [];
+  for (const stateDay of state.days) {
+    for (const app in state.appointments) {
+      const thisAppointment = state.appointments[app]
+
+      if (stateDay.name === day) {
+        for (const int in state.interviewers) {
+          if (thisAppointment.interview !== null) {
+            if (thisAppointment.interview.interviewer === state.interviewers[int].id) {
+              if (!filteredInterviewers.includes(state.interviewers[int])) {
+                filteredInterviewers.push(state.interviewers[int])
+              }
+            }
+          }
+        }
+      }
+    };
+  }
+  if (filteredInterviewers.length === 0) {
+    return [];
+  }
+  return filteredInterviewers;
 }
