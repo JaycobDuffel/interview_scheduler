@@ -25,36 +25,7 @@ export function useApplicationData() {
       }));
     });
   }, []);
-  /* 
-function bookInterview(id, interview) {
-    const appointment = {
-      ...state.appointments[id],
-      interview: { ...interview }
-    };
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment
-    };
 
-    const spotsDecrease = () => {
-      const daysArr = [...state.days]
-      daysArr.map(day => {
-        for(let appointment of day.appointments) {
-          if (appointment === id) {
-            day.spots--;
-          }
-        }
-        
-      })
-      return daysArr;
-    }
-    return axios.put(`/api/appointments/${id}`, { interview })
-      .then(() => {
-        spotsDecrease()
-        setState({...state, appointments});
-      })
-  };
-*/
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -66,23 +37,24 @@ function bookInterview(id, interview) {
       [id]: appointment,
     };
 
-    function spotsDecrease() {
-      const daysArray = [...state.days];
-      daysArray.map((day) => {
-        for (const appointment of day.appointments) {
-          if (appointment === id) {
-            day.spots--;
-          }
-        }
-      });
-      return daysArray;
-    }
-
     return axios.put(`/api/appointments/${id}`, { interview })
     .then(() => {
-      spotsDecrease();
+      numOfSpots(id, -1);
       setState({ ...state, appointments });
     });
+  }
+
+  const numOfSpots = (id, diff) => {
+    const daysArr = [...state.days]
+    daysArr.map(day => {
+      for(let appointment of day.appointments) {
+        if (appointment === id) {
+          day.spots += diff;
+        }
+      }
+      
+    })
+    return daysArr;
   }
 
   function cancelInterview(id) {
@@ -95,24 +67,9 @@ function bookInterview(id, interview) {
       ...state.appointments,
       [id]: appointment,
     };
-
-    const increaseSpots = () => {
-      const daysArr = [...state.days]
-      daysArr.map(day => {
-        for(let appointment of day.appointments) {
-          if (appointment === id) {
-            day.spots++;
-          }
-        }
-        
-      })
-      return daysArr;
-    }
-
-
     
     return axios.delete(`/api/appointments/${id}`).then(() => {
-      increaseSpots();
+      numOfSpots(id, 1);
       setState({ ...state, appointments });
     });
   }
