@@ -1,65 +1,40 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios"
+import React from "react";
 
+// components
 import "components/Application.scss";
 import DayList from "components/DayList"
 import Appointment from "components/Appointment/index";
+
 import { getAppointmentsForDay, getInterview, getInterviewersByDay } from "../helpers/selectors"
+
+// hooks
+import { useApplicationData } from "hooks/useApplicationData"
 
 
 export default function Application(props) {
 
-  const [state, setState] = useState({
-    day: "Monday",
-    days: [],
-    appointments: {},
-    interviewers: {}
-  });
-
-  function bookInterview(id, interview) {
-    console.log(id, interview);
-  }
-  
-
-  const setDay = day => setState({ ...state, day });
-
-
-  useEffect(() => {
-    Promise.all([
-      Promise.resolve(
-        axios.get('/api/days')
-      ),
-      Promise.resolve(
-        axios.get('/api/appointments')
-      ),
-      Promise.resolve(
-        axios.get('/api/interviewers')
-      )
-    ])
-      .then((all) => {
-        setState(prev => ({ ...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }))
-      })
-
-  }, [])
+  const {
+    state,
+    setDay,
+    bookInterview,
+    cancelInterview
+  } = useApplicationData();
 
   const interviewers = getInterviewersByDay(state, state.day)
-  const appointments = getAppointmentsForDay(state, state.day)
-  const appointmentList = appointments.map(appointment => {
-    const interview = getInterview(state, appointment.interview);
+  const appointments = getAppointmentsForDay(state, state.day).map(appointment => {
     return (
       <Appointment
         key={appointment.id}
         id={appointment.id}
         time={appointment.time}
-        interview={interview}
+        interview={getInterview(state, appointment.interview)}
         interviewers={interviewers}
-        bookInterview={bookInterview(appointment.id, interview)}
+        bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
       />
 
     );
   });
-
-
 
   return (
     <main className="layout">
@@ -85,7 +60,7 @@ export default function Application(props) {
         />
       </section>
       <section className="schedule">
-        {appointmentList}
+        {appointments}
       </section>
 
 
@@ -93,5 +68,3 @@ export default function Application(props) {
 
   );
 }
-
-
