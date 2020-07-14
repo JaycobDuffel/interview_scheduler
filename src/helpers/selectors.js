@@ -38,27 +38,19 @@ export function getInterview(state, interview) {
 }
 
 export function getInterviewersByDay(state, day) {
-
-  const filteredInterviewers = [];
-  for (const stateDay of state.days) {
-    for (const app in state.appointments) {
-      const thisAppointment = state.appointments[app]
-
-      if (stateDay.name === day) {
-        for (const int in state.interviewers) {
-          if (thisAppointment.interview !== null) {
-            if (thisAppointment.interview.interviewer === state.interviewers[int].id) {
-              if (!filteredInterviewers.includes(state.interviewers[int])) {
-                filteredInterviewers.push(state.interviewers[int])
-              }
-            }
-          }
-        }
+  let interviewersArray = [];
+  const interviewerData = [];
+  state.days.map(dayObj => {
+    if (dayObj.name === day) {
+      interviewersArray = dayObj.interviewers
+    }
+  })
+  for(let interviewer of interviewersArray) {
+    for(const [key,value] of Object.entries(state.interviewers)) {
+      if (interviewer.toString() === key) {
+        interviewerData.push(value)
       }
-    };
+    }
   }
-  if (filteredInterviewers.length === 0) {
-    return [];
-  }
-  return filteredInterviewers;
+  return interviewerData;
 }
