@@ -53,7 +53,6 @@ export default function Application(props) {
             day={state.day}
             setDay={setDay}
           />
-
         </nav>
         <img
           className="sidebar__lhl sidebar--centered"
@@ -65,9 +64,6 @@ export default function Application(props) {
         {appointments}
         <Appointment key="last" time="5pm"/>
       </section>
-
-
     </main>
-
   );
 }

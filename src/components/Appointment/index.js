@@ -82,8 +82,7 @@ export default function Appointment(props) {
       {mode === DELETING && <Status replace={true} message={"Deleting"} />}
 
       {mode === CONFIRM && (
-        <Confirm onCancel={() => back()} onConfirm={cancel} />
-      )}
+        <Confirm onCancel={() => back()} onConfirm={cancel} />)}
 
       {mode === EDIT && (
         <Form
@@ -105,5 +104,5 @@ export default function Appointment(props) {
         <Error message={"Could not save appointment"} onClose={() => back()} />
       )}
     </article>
-  );
+  )
 }
