@@ -13,11 +13,10 @@ Jaycob Duffel (https://github.com/JaycobDuffel)
 
 ## Screenshots
 
-!["root page"]()
-![Adding appointment]()
-![Showign new appointment]()
-!["editing appointment"]()
-!["deleting page"]()
+!["root page"](https://github.com/JaycobDuffel/interview_scheduler/blob/master/docs/home_page.png?raw=true)
+![Adding appointment](https://github.com/JaycobDuffel/interview_scheduler/blob/master/docs/add_new_appt.png?raw=true)
+![Showing new appointment](https://github.com/JaycobDuffel/interview_scheduler/blob/master/docs/Added_new_appointment.png?raw=true)
+!["deleting page"](https://github.com/JaycobDuffel/interview_scheduler/blob/master/docs/deleting.png?raw=true)
 
 ## Dependencies
 
