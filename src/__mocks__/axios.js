@@ -54,6 +54,32 @@ const fixtures = {
 };
 
 export default {
+  delete: jest.fn((url) => {
+    switch (url) {
+      case `/api/appointments/${2}`:
+        return Promise.resolve({
+          status: 204,
+          statusText: "No Content",
+        });
+        break;
+    }
+  }),
+  put: jest.fn((url) => {
+    switch (url) {
+      case `/api/appointments/${1}`:
+        return Promise.resolve({
+          status: 204,
+          statusText: "No Content",
+        });
+        break;
+        case `/api/appointments/${2}`:
+        return Promise.resolve({
+          status: 204,
+          statusText: "No Content",
+        });
+        break;
+    }
+  }),
   get: jest.fn((url) => {
     switch (url) {
       case "/api/days":
@@ -78,5 +104,5 @@ export default {
         });
         break;
     }
-  }),
+  })
 };

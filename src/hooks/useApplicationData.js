@@ -44,6 +44,23 @@ export function useApplicationData() {
     });
   }
 
+  function editInterview(id, interview) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview },
+    };
+
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment,
+    };
+
+    return axios.put(`/api/appointments/${id}`, { interview })
+    .then(() => {
+      setState({ ...state, appointments });
+    });
+  }
+
   const numOfSpots = (id, diff) => {
     const daysArr = [...state.days]
     daysArr.map(day => {
@@ -75,6 +92,7 @@ export function useApplicationData() {
   }
 
   return {
+    editInterview,
     bookInterview,
     cancelInterview,
     setDay,

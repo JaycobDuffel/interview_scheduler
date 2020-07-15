@@ -7,7 +7,7 @@ import Appointment from "components/Appointment";
 
 
 describe("Appointment", () => {
-  xit("renders without crashing", () => {
+  it("renders without crashing", () => {
     render(<Appointment />);
   });
 });

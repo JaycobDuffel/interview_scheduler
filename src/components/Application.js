@@ -3,7 +3,7 @@ import React from "react";
 // components
 import "components/Application.scss";
 import DayList from "components/DayList"
-import Appointment from "components/Appointment/index";
+import Appointment from "components/Appointment/";
 
 import { getAppointmentsForDay, getInterview, getInterviewersByDay } from "../helpers/selectors"
 
@@ -17,7 +17,8 @@ export default function Application(props) {
     state,
     setDay,
     bookInterview,
-    cancelInterview
+    cancelInterview,
+    editInterview
   } = useApplicationData();
 
   const interviewers = getInterviewersByDay(state, state.day)
@@ -31,6 +32,7 @@ export default function Application(props) {
         interviewers={interviewers}
         bookInterview={bookInterview}
         cancelInterview={cancelInterview}
+        editInterview={editInterview}
       />
 
     );
@@ -61,6 +63,7 @@ export default function Application(props) {
       </section>
       <section className="schedule">
         {appointments}
+        <Appointment key="last" time="5pm"/>
       </section>
 
 

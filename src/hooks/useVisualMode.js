@@ -18,7 +18,6 @@ export function useVisualMode(initial) {
       history.pop()
       setHistory(history)
       setMode(history[history.length - 1])
-
     }
   }
 
