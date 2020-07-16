@@ -4,7 +4,7 @@ import InterviewerList from "components/InterviewerList"
 
 export default function Form(props) {
   const [name, setName] = useState( props.name || props.student || "")
-  const [interviewer, setInterviewer] = useState(props.interviewer.name ||props.interviewer || null)
+  const [interviewer, setInterviewer] = useState(props.interviewerId ||  null)
   const [error, setError] = useState("");
   
   const reset = function () {
