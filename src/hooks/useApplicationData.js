@@ -95,7 +95,6 @@ export function useApplicationData() {
     editInterview,
     bookInterview,
     cancelInterview,
-    setDay,
     state,
   };
 }
