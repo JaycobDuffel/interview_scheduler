@@ -66,7 +66,7 @@ export function useApplicationData() {
     daysArr.map(day => {
       for(let appointment of day.appointments) {
         if (appointment === id) {
-          day.spots += diff;
+         return day.spots += diff;
         }
       }
       
