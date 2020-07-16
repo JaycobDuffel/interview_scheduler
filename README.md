@@ -31,7 +31,7 @@ Jaycob Duffel (https://github.com/JaycobDuffel)
 ## Getting Started
 - Install dependencies using the npm install command.
 - Start the web server using the npm start command. The app will be served at http://localhost:8000/.
-- Go to http://localhost:8080/ in your browser.
+- Go to http://localhost:8000/ in your browser.
 
 ## Setup
 
