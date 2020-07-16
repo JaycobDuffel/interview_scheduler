@@ -63,13 +63,13 @@ export function useApplicationData() {
 
   const numOfSpots = (id, diff) => {
     const daysArr = [...state.days]
-    daysArr.map(day => {
+     daysArr.map(function(day) {
       for(let appointment of day.appointments) {
         if (appointment === id) {
-         return day.spots += diff;
-        }
+         day.spots += diff;
+        } 
       }
-      
+      return day.spots;
     })
     return daysArr;
   }
