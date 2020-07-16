@@ -40,10 +40,9 @@ export function getInterview(state, interview) {
 export function getInterviewersByDay(state, day) {
   let interviewersArray = [];
   const interviewerData = [];
-  state.days.map(dayObj => {
-    if (dayObj.name === day) {
+  state.days.filter(dayObj => dayObj.name === day)
+  .map(dayObj => {
      return interviewersArray = dayObj.interviewers
-    }
   })
   for(let interviewer of interviewersArray) {
     for(const [key,value] of Object.entries(state.interviewers)) {
