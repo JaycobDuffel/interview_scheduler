@@ -4,7 +4,7 @@
 =========
 
 ## Project Overview
-Interview Scheculer is a scheduler app that allows a user to book, change, and delete interviews. Interview Scheduler was built with React and tested with Storybook, Jest, and Cypress.
+Interview Scheduler is a scheduler app that allows a user to book, change, and delete interviews. Interview Scheduler was built with React and tested with Storybook, Jest, and Cypress.
 
 
 ## Github
