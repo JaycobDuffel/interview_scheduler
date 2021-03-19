@@ -8,7 +8,7 @@ Interview Scheduler is a scheduler app that allows a user to book, change, and d
 
 ## Deployed Demo
 
-(https://buckyhc.tech/)
+https://buckyhc.tech/
 
 
 ## Github
