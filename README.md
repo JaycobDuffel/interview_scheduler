@@ -6,11 +6,6 @@
 ## Project Overview
 Interview Scheduler is a scheduler app that allows a user to book, change, and delete interviews. Interview Scheduler was built with React and tested with Storybook, Jest, and Cypress.
 
-## Deployed Demo
-
-https://buckyhc.tech/
-
-
 ## Github
 
 Jaycob Duffel (https://github.com/JaycobDuffel)
